@@ -38,7 +38,13 @@ With logging enabled, the console output will look like this:
 ```
 
 ### Installation
-Clone this repository:
+The easiest way is to install KONECT2NetworkX from PyPI:
+```
+pip install konect2networkx
+```
+That's it!
+
+Alternatively, clone this repository:
 ```
 git clone https://github.com/jkudla/konect2networkx
 ```
@@ -47,8 +53,6 @@ Navigate into the resulting directory and install the package using pip:
 pip install -e .
 ```
 Voilà – now you should be able to use KONECT2NetworkX just like in the example above :)
-
-**Note**: This package will shortly be published on PyPI.
 
 ## Documentation
 All features are encapsulated in just two functions.
