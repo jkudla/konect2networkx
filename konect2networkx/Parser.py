@@ -27,7 +27,7 @@ class Parser:
     """ Used to print status messages """
     def log(self, message):
         if self.logging:
-            print('[Parser] {message}'.format(message = message))
+            print('[KONECT2NetworkX] {message}'.format(message = message))
 
     """ Contructs the networkx graph, invoked by parse """
     def build_graph(self):
@@ -63,6 +63,7 @@ class Parser:
             else:
                 G.add_edge(x, y, weight = w)
 
+        self.log('NetworkX graph object built')
         return G
 
     """
@@ -82,16 +83,28 @@ class Parser:
             self.multigraph = d in multigraph_types
             self.weighted = d in weighted_types
 
+        self.log('Network metadata parsed: {partite}, {directed}, {weighted}, {multi}'.format(
+            partite = 'bipartite' if self.bipartite else 'unipartite',
+            directed = 'directed' if self.directed else 'undirected',
+            weighted = 'weighted' if self.weighted else 'unweighted',
+            multi = 'multigraph' if self.multigraph else 'no multigraph'
+        ))
+
+        self.log('Parsing size information')
         sizedata = lines[1].split(' ')
         self.m = int(sizedata[1])
         self.nleft = int(sizedata[2])
         self.nright = int(sizedata[3])
 
         if self.bipartite:
+            self.log('Network has partition sizes {lhs} and {rhs}'.format(lhs = self.nleft, rhs = self.nright))
             self.n = self.nleft + self.nright
         else:
             self.n = self.nleft
 
+        self.log('Network has {n} nodes and {m} edges in total'.format(n = self.n, m = self.m))
+
         self.payload = lines[2:]
 
+        self.log('Building NetworkX graph object')
         return self.build_graph()
