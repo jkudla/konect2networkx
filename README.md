@@ -21,6 +21,22 @@ plt.savefig('karate.png', format = 'PNG')
 ```
 For reference, the Zachary karate club network can be found [here](http://konect.cc/networks/ucidata-zachary/).
 
+With logging enabled, the console output will look like this:
+```
+[KONECT2NetworkX] Downloading network ucidata-zachary
+[KONECT2NetworkX] Attemping to download network to ucidata-zachary.tar.bz2
+[KONECT2NetworkX] HTTP request successful, writing network to ucidata-zachary.tar.bz2
+[KONECT2NetworkX] Network successfully unpacked!
+[KONECT2NetworkX] Seeking main network file
+[KONECT2NetworkX] Main network file found under standard name ucidata-zachary/out.ucidata-zachary
+[KONECT2NetworkX] Main network file successfully read, launching parser
+[KONECT2NetworkX] Network metadata parsed: unipartite, undirected, unweighted, no multigraph
+[KONECT2NetworkX] Parsing size information
+[KONECT2NetworkX] Network has 34 nodes and 78 edges in total
+[KONECT2NetworkX] Building NetworkX graph object
+[KONECT2NetworkX] NetworkX graph object built
+```
+
 ### Installation
 Clone this repository:
 ```
