@@ -17,7 +17,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 setup(
     name = "konect2networkx",
     version = "0.1.0",
-    description = "Python package bridging the gap between the KONECT project and networkx",
+    description = "Python package bridging the gap between the KONECT project and NetworkX",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/jkudla/konect2networkx",
