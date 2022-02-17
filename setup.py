@@ -28,10 +28,10 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3"
+        "Programming Language :: Python :: 3",
         "Operating System :: OS Independent"
     ],
     packages = ["konect2networkx"],
     include_package_data = True,
-    install_requires = ["networkx"]
+    install_requires = ["requests", "networkx"]
 )
