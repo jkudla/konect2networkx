@@ -2,6 +2,7 @@ import requests
 import shutil
 import networkx as nx
 
+from .Loader import *
 from .Parser import *
 from .exceptions import *
 
@@ -43,8 +44,12 @@ def get(id, download = True, logging = True):
     lines = None
     try:
         log('Seeking main network file', logging)
-        file = open('{id}/out.{id}'.format(id = id), 'r')
-        log('Main network file found under standard name {id}/out.{id}'.format(id = id), logging)
+        loader = Loader(id)
+        filepath = loader.seek_out_file()
+        file = open(filepath, 'r')
+
+        # file = open('{id}/out.{id}'.format(id = id), 'r')
+        # log('Main network file found under standard name {id}/out.{id}'.format(id = id), logging)
         lines = file.read().splitlines()
         file.close()
         if len(lines) < 2:

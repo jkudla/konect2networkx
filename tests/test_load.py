@@ -23,16 +23,24 @@ class TestLoad(unittest.TestCase):
             shutil.rmtree('muhaha') # clean up
 
 
-    def test_network_wrong_filename(self):
+    def test_network_non_standard_filename(self):
         os.mkdir('muhaha')
         f = open('muhaha/out.muh', 'w') # this is wrong
         f.write('% sym unweighted\n% 3 3 3\n1 2\n1 3\n2 3\n')
         f.close()
 
+        try:
+            k2n.get('muhaha', False)
+        except k2n.LoadException:
+            self.fail('LoadException raised unexpectedly')
+        finally:
+            shutil.rmtree('muhaha') # clean up
+
+
+    def test_network_lacking_out_file(self):
+        os.mkdir('muhaha')
         self.assertRaises(k2n.LoadException, k2n.get, 'muhaha', False)
-
         shutil.rmtree('muhaha') # clean up
-
 
 if __name__ == '__main__':
     unittest.main()
